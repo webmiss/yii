@@ -1,1 +1,1 @@
-<?php echo $this->params['baseUrl']; ?>
+<?php echo $this->context->getUrl(); ?>

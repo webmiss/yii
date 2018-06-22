@@ -10,7 +10,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'搜索',width:360,height:200});
 		// ajax
-		$.get($base_url+'SysMenusAction/search'+$get_url,function(data){
+		$.get($base_url+'sysmenusaction/search'+$get_url,function(data){
 			$.webmis.load(data);
 		});
 		return false;
@@ -21,7 +21,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'添加',width:420,height:260});
 		// ajax
-		$.get($base_url+'SysMenusAction/add',function(data){
+		$.get($base_url+'sysmenusaction/add',function(data){
 			// 加载内容
 			$.webmis.load(data);
 			// 提交表单
@@ -38,7 +38,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'编辑',width:420,height:260});
 		// 内容
-		$.post($base_url+'SysMenusAction/edit',{'id':id},function(data){
+		$.post($base_url+'sysmenusaction/edit',{'id':id},function(data){
 			// 加载内容
 			$.webmis.load(data);
 			// 提交表单
@@ -53,7 +53,7 @@ $(function () {
 		if(!id){return false;}
 		// 创建窗口
 		$.webmis.win({title:'删除',width:280,height:160});
-		$.post($base_url+'SysMenusAction/del',{'id':id},function(data){
+		$.post($base_url+'sysmenusaction/del',{'id':id},function(data){
 			$.webmis.load(data);
 			// 赋值ID
 			$('#DelID').val(id);

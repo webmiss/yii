@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="/webmis/plugin/jquery/jquery-3.min.js"></script>
 	<script type="text/javascript" src="/webmis/jquery.webmis.js"></script>
 	<script type="text/javascript" src="/themes/admin/main.js"></script>
-<?php if(isset($LoadJS)){foreach($LoadJS as $val){?>
+<?php if(isset($this->params['LoadJS'])){foreach($this->params['LoadJS'] as $val){?>
 	<script type="text/javascript" src="/themes/admin/js/<?php echo $val;?>"></script>
 <?php }}?>
 </head>
@@ -31,7 +31,7 @@ foreach($this->params['Menus']['Data'] as $val){
 		$an = 'nav_an2';
 	}
 ?>
-			<li><a href="<?php echo $this->params['baseUrl'].strtolower($val->url);?>" class="<?php echo $an;?>"><em class="<?php echo $val->ico;?>"></em><span><?php echo $val->title;?></span></a></li>
+			<li><a href="<?php echo $this->context->getUrl(strtolower($val->url));?>" class="<?php echo $an;?>"><em class="<?php echo $val->ico;?>"></em><span><?php echo $val->title;?></span></a></li>
 <?php }?>
 		</ul>
 		<div class="top_link">
@@ -45,7 +45,7 @@ foreach($this->params['Menus']['Data'] as $val){
 						职务: <?php echo $this->params['Uinfo']['position'];?>
 					</span>
 					<a href="" class="btop">修改密码</a>
-					<a href="<?php echo $this->params['baseUrl'];?>index/logout" class="btop center">注销</a>
+					<a href="<?php echo $this->context->getUrl('index/logout');?>" class="btop center">注销</a>
 				</span>
 			</span>
 		</div>
@@ -64,7 +64,7 @@ if(isset($val1->menus)){foreach ($val1->menus as $val2){
 	$ico = $val2->ico?'<em class="'.$val2->ico.'"></em>':'';
 	$an = isset($this->params['Menus']['CID'][2])&&$val2->id==$this->params['Menus']['CID'][2]?'left_an1':'left_an2';
 ?>
-				<li><a href="<?php echo $this->params['baseUrl'].strtolower($val2->url);?>" class="<?php echo $an;?>"><?php echo $ico;?><span><?php echo $val2->title;?></span></a></li>
+				<li><a href="<?php echo $this->context->getUrl(strtolower($val2->url));?>" class="<?php echo $an;?>"><?php echo $ico;?><span><?php echo $val2->title;?></span></a></li>
 <?php }}?>
 			</ul>
 <?php }?>
@@ -76,7 +76,7 @@ if(isset($val1->menus)){foreach ($val1->menus as $val2){
 
 		</div>
 	</div>
-<div id="BaseURL" style="display: none;"><?php echo $this->params['baseUrl'];?></div>
+<div id="BaseURL" style="display: none;"><?php echo $this->context->getUrl();?></div>
 <div id="GetUrl" style="display: none;"><?php echo $this->params['getUrl'];?></div>
 </body>
 </html>

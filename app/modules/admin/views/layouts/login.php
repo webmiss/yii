@@ -30,7 +30,7 @@
 			<li class="login_vcode">
 				<label class="login_input">
 					<input type="text" id="vcode" placeholder="验证码" maxlength="4" />
-					<img src="<?php echo $this->params['baseUrl'];?>index/vcode" id="clickVcode" class="login_vcode" alt="验证码" />
+					<img src="<?php echo $this->context->getUrl('index/vcode');?>" id="clickVcode" class="login_vcode" alt="验证码" />
 				</label>
 				<label class="login_uname"><input type="checkbox" id="remember" checked="true">&nbsp;记住用户名</label>
 			</li>
@@ -40,7 +40,7 @@
 		</ul>
 		<div class="login_copy">Copyright © WebMIS All rights are reserved.</div>
 	</div>
-<div id="BaseURL" style="display: none;"><?php echo $this->params['baseUrl'];?></div>
+<div id="BaseURL" style="display: none;"><?php echo $this->context->getUrl();?></div>
 <script type="text/javascript" src="/webmis/plugin/jquery/jquery-3.min.js"></script>
 <script type="text/javascript" src="/webmis/jquery.webmis.js"></script>
 <script type="text/javascript" src="/themes/admin/login.js"></script>

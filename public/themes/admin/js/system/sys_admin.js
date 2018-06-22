@@ -10,7 +10,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'搜索',width:420,height:280});
 		// ajax
-		$.get($base_url+'SysAdmins/search'+$get_url,function(data){
+		$.get($base_url+'sysadmins/search'+$get_url,function(data){
 			$.webmis.load(data);
 		});
 		return false;
@@ -21,7 +21,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'添加',width:620,height:490});
 		// ajax
-		$.get($base_url+'SysAdmins/add',function(data){
+		$.get($base_url+'sysadmins/add',function(data){
 			// 加载内容
 			$.webmis.load(data);
 			// 提交表单
@@ -38,7 +38,7 @@ $(function () {
 		// 创建窗口
 		$.webmis.win({title:'编辑',width:620,height:440});
 		// 内容
-		$.post($base_url+'SysAdmins/edit',{'id':id},function(data){
+		$.post($base_url+'sysadmins/edit',{'id':id},function(data){
 			// 加载内容
 			$.webmis.load(data);
 			// 提交表单
@@ -53,7 +53,7 @@ $(function () {
 		if(!id){return false;}
 		// 创建窗口
 		$.webmis.win({title:'删除',width:280,height:160});
-		$.post($base_url+'SysAdmins/del',{'id':id},function(data){
+		$.post($base_url+'sysadmins/del',{'id':id},function(data){
 			$.webmis.load(data);
 			// 赋值ID
 			$('#DelID').val(id);
@@ -69,7 +69,7 @@ $(function () {
 		if(!id){return false;}
 		// 创建窗口
 		$.webmis.win({title:'审核',width:280,height:160});
-		$.post($base_url+'SysAdmins/audit',{'id':id},function(data){
+		$.post($base_url+'sysadmins/audit',{'id':id},function(data){
 			$.webmis.load(data);
 			// 赋值ID
 			$('#DelID').val(id);
@@ -90,7 +90,7 @@ function Form(){
 		var res=1;
 		$.ajax({
 			type:"POST",
-			url:$base_url+'SysAdmins/isUname',
+			url:$base_url+'sysadmins/isUname',
 			async:false,
 			data:{'name':name,'val':value},
 			dataType:'json',
@@ -160,7 +160,7 @@ function editPerm(id,perm){
 	// 宽高
 	$.webmis.win({title:'编辑权限',width:820,height:540});
 	// Content
-	$.post($base_url+'SysAdmins/perm',{'perm':perm},function(data){
+	$.post($base_url+'sysadmins/perm',{'perm':perm},function(data){
 		$.webmis.load(data);
 		//提交
 		$('#editPerm').click(function(){
@@ -182,7 +182,7 @@ function editPerm(id,perm){
 				perm += $(this).val()+':'+a+' ';
 			});
 			// 提交权限
-			$.post($base_url+'SysAdmins/permData',{'id':id,'perm':perm},function(data){
+			$.post($base_url+'sysadmins/permData',{'id':id,'perm':perm},function(data){
 				if(data.state=='y'){
 					$.webmis.close(data.url+$get_url);
 				}else{
