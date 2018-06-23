@@ -64,10 +64,10 @@ class SysmenusController extends UserBase {
 		$model = new SysMenu();
 		foreach($data as $key=>$val) $model->$key = $val;
 		// 执行
-		if($model->save()===false){
-			return $this->setJsonContent(['state'=>'n','msg'=>'添加失败！']);
-		}else{
+		if($model->save()===true){
 			return $this->setJsonContent(['state'=>'y','url'=>'sysmenus','msg'=>'添加成功！']);
+		}else{
+			return $this->setJsonContent(['state'=>'n','msg'=>'添加失败！']);
 		}
 	}
 
@@ -96,10 +96,10 @@ class SysmenusController extends UserBase {
 		$model = SysMenu::findOne($this->request->post('id'));
 		foreach($data as $key=>$val) $model->$key = $val;
 		// 执行
-		if($model->save()===false){
-			return $this->setJsonContent(['state'=>'n','msg'=>'编辑失败！']);
-		}else{
+		if($model->update()!==false){
 			return $this->setJsonContent(['state'=>'y','url'=>'sysmenus','msg'=>'编辑成功！']);
+		}else{
+			return $this->setJsonContent(['state'=>'n','msg'=>'编辑失败！']);
 		}
 	}
 
@@ -110,12 +110,12 @@ class SysmenusController extends UserBase {
 	function actionDeldata(){
 		if(!$this->request->isPost) return false;
 		// 获取ID
-		$id = implode(',',json_decode($_POST['id']));
+		$id = implode(',',json_decode($this->request->post('id')));
 		// 执行
-		if( SysMenu::deleteAll('id IN ('.$id.')')===false){
-			return $this->setJsonContent(['state'=>'n','msg'=>'删除失败！']);
-		}else{
+		if(SysMenu::deleteAll('id IN ('.$id.')')!==false){
 			return $this->setJsonContent(['state'=>'y','url'=>'sysmenus','msg'=>'删除成功！']);
+		}else{
+			return $this->setJsonContent(['state'=>'n','msg'=>'删除失败！']);
 		}
 	}
 
@@ -123,7 +123,7 @@ class SysmenusController extends UserBase {
 	function actionGetmenu(){
 		if(!$this->request->isPost) return false;
 		// 实例化
-		$menus = SysMenu::find()->where('fid='. $_POST['fid'])->select('id,title')->all();
+		$menus = SysMenu::find()->where('fid='. $this->request->post('fid'))->select('id,title')->all();
 		$data = [];
 		foreach($menus as $val){
 			$data[] = [$val->id,$val->title];

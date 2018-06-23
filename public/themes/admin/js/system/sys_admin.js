@@ -90,7 +90,7 @@ function Form(){
 		var res=1;
 		$.ajax({
 			type:"POST",
-			url:$base_url+'sysadmins/isUname',
+			url:$base_url+'sysadmins/isuname',
 			async:false,
 			data:{'name':name,'val':value},
 			dataType:'json',
@@ -182,7 +182,7 @@ function editPerm(id,perm){
 				perm += $(this).val()+':'+a+' ';
 			});
 			// 提交权限
-			$.post($base_url+'sysadmins/permData',{'id':id,'perm':perm},function(data){
+			$.post($base_url+'sysadmins/permdata',{'id':id,'perm':perm},function(data){
 				if(data.state=='y'){
 					$.webmis.close(data.url+$get_url);
 				}else{

@@ -2,11 +2,11 @@
 use app\library\Inc;
 ?>
 <div class="action">
-	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+	<span class="title"><?php echo $this->params['Menus']['Ctitle'];?></span>
 	<div class="actionM">
 		<div id="Menus">
-<?php foreach ($Menus['action'] as $val){
-	$url = $val['ico']=='ico-list'?self::getUrl(CONTROLLER):'';
+<?php foreach ($this->params['Menus']['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->context->getUrl($this->context->id):'';
 ?>
 			<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
 <?php }?>
