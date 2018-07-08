@@ -1,26 +1,36 @@
 # WebMIS
-WebMIS is just a development idea.<br>
+WebMIS基于YII2轻量级、高性能、面向对象的HMVC框架！<br>
 Home: http://yii.webmis.vip/<br>
 Admin: http://yii.webmis.vip/admin/index<br>
 uanme: admin  passwd: admin
 
-# Install
-```bash
-Database : public/db/mvc.sql
+# 安装
+### 1) Composer方式
+``` bash
+composer create-project webmiss/yii=1.0.* yii
+```
+或者 composer.json
+``` bash
+{
+    "require": {
+        "webmiss/yii":"1.0.*"
+    }
+}
+```
+### 2) 导入数据库
+``` bash
+public/db/mvc.sql
 ```
 
-# Configuration
-### 1) Apache
+# 美化URL
+### 1) Apache（public/.htaccess）
 ```bash
-AllowOverride All
-Require all granted
-Options Indexes FollowSymLinks
-```
-public/.htaccess
-```bash
+# 编码
 AddDefaultCharset UTF-8
-
 <IfModule mod_rewrite.c>
+    # 目录浏览
+    Options Indexes FollowSymLinks
+    # 重写
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
