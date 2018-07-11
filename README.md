@@ -5,21 +5,17 @@ Admin: http://yii.webmis.vip/admin/index<br>
 uanme: admin  passwd: admin
 
 # 安装
-### 1) Composer方式
-``` bash
-composer create-project webmiss/yii=1.0.* yii
-```
-或者 composer.json
-``` bash
-{
-    "require": {
-        "webmiss/yii":"1.0.*"
-    }
-}
+### 1) 克隆项目
+```bash
+git clone https://github.com/webmiss/yii yii
 ```
 ### 2) 导入数据库
 ``` bash
 public/db/mvc.sql
+```
+### 3) 更新项目
+```bash
+composer update
 ```
 
 # 美化URL
