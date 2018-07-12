@@ -5,9 +5,9 @@ Admin: http://yii.webmis.vip/admin/index<br>
 uanme: admin  passwd: admin
 
 # 安装
-### 1) 克隆项目
-```bash
-git clone https://github.com/webmiss/yii yii
+### 1) 创建项目
+``` bash
+composer create-project webmiss/yii yii
 ```
 ### 2) 导入数据库
 ``` bash
