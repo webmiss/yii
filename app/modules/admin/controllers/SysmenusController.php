@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\admin\controllers;
 
+use app\library\Page;
 use app\modules\admin\models\SysMenu;
 use app\modules\admin\models\SysMenuAction;
 
@@ -10,7 +11,7 @@ class SysmenusController extends UserBase {
 	function actionIndex(){
 		// 分页
 		if(isset($_GET['search'])){
-			$like = $this->pageWhere();
+			$like = Page::where();
 			// 生成搜索条件
 			$where = '';
 			foreach ($like['data'] as $key => $val){
@@ -18,12 +19,13 @@ class SysmenusController extends UserBase {
 			}
 			$where = rtrim($where,'AND ');
 			$getUrl = $like['getUrl'];
+			$this->view->params['getUrl'] = $like['search'];
 		}else{
 			$where = '';
 			$getUrl = '';
 		}
 		// 数据
-		self::setVar('List',$this->page([
+		self::setVar('List', Page::get([
 			'model'=>'SysMenu',
 			'where'=>$where,
 			'getUrl'=>$getUrl
